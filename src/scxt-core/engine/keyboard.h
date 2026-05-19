@@ -27,6 +27,7 @@
 #ifndef SCXT_SRC_SCXT_CORE_ENGINE_KEYBOARD_H
 #define SCXT_SRC_SCXT_CORE_ENGINE_KEYBOARD_H
 
+#include <algorithm>
 #include <utility>
 #include <cassert>
 
