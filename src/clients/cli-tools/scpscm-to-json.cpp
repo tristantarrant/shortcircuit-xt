@@ -34,9 +34,12 @@
 #include "json/engine_traits.h"
 
 #include "tao/json/msgpack/to_string.hpp"
+#include "tao/json/events/to_pretty_stream.hpp"
+#include "tao/json/events/to_value.hpp"
+#include "tao/json/msgpack/events/from_string.hpp"
 
 template <template <typename...> class... Transformers, template <typename...> class Traits>
-void to_pretty_stream(std::ostream &os, const tao::json::basic_value<Traits> &v)
+void value_to_pretty_stream(std::ostream &os, const tao::json::basic_value<Traits> &v)
 {
     tao::json::events::transformer<tao::json::events::to_pretty_stream, Transformers...> consumer(
         os, 3);
@@ -46,7 +49,7 @@ void to_pretty_stream(std::ostream &os, const tao::json::basic_value<Traits> &v)
 template <typename T> std::string streamValue(const T &v)
 {
     std::ostringstream oss;
-    to_pretty_stream(oss, v);
+    value_to_pretty_stream(oss, v);
     return oss.str();
 }
 
